@@ -14,6 +14,10 @@ template '/etc/motd' do
 	source 'motd.erb'
 	owner 'root'
 	group 'root'
+	variables(
+		:name => 'Chef'
+	)
+	action :create
 end
 
 service 'ntpd' do
