@@ -10,15 +10,8 @@ package 'git' do
 	action :install
 end
 
-file '/etc/motd' do
-	content "
-	This server is the property of Serhii Sytnikov \n
-	
-	IPADDRESS: #{node['ipaddress']}
-	HOSTNAME: #{node['hostname']}
-	TOTAL MEMORY: #{node['memory']['total']}
-	CPU: #{node['cpu']['0']['mhz']} MHz
-"
+template '/etc/motd' do
+	source 'motd.erb'
 	owner 'root'
 	group 'root'
 	action :create	
